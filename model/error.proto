@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = "gitee.com/ez-deploy/protobuf/model";
+
+
+message Error {
+    bool success = 1;
+    string error = 2;
+}
+
+// no other return value.
+message CommonResp {
+    Error error = 1;
+}

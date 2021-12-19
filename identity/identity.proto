@@ -1,0 +1,67 @@
+syntax = "proto3";
+ 
+import "model/error.proto";
+import "model/identity.proto";
+
+option go_package = "gitee.com/ez-deploy/protobuf/identity";
+
+service Ops {
+    // Register by email and password.
+    rpc Register (RegisterReq) returns (CommonResp) {}
+    // Login by email and password.
+    rpc Login (LoginReq) returns (LoginResp) {}
+    // Verify by session_token.
+    rpc Verify (VerifyReq) returns (VerifyResp) {}
+
+    // generate private_token.
+    rpc ReGeneratePrivateToken(Identity) returns (CommonResp);
+    // get private_token.
+    rpc GetPrivateToken(Identity) returns (Token);
+
+    // generate public_token.
+    rpc GeneratePublicToken(GeneratePublicTokenReq) returns (CommonResp);
+    // list user's public_tokens.
+    rpc ListPublicToken(Identity) returns (ListPublicTokenResp);
+    // delete public_token.
+    rpc DeletePublicToken(DeletePublicTokenReq) returns (CommonResp);
+}
+
+message RegisterReq {
+    Identity identity = 1;
+    string password = 2;
+}
+
+message LoginReq {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResp {
+    Error error = 1;
+    Identity identity = 2;
+    Token token = 3;
+}
+
+message VerifyReq {
+    Token token = 1;
+};
+
+message VerifyResp {
+    Error error = 1;
+    Identity identity = 2;
+    TokenType token_type = 3;
+}
+
+message GeneratePublicTokenReq {
+    Identity identity = 1;
+    APIToken api_token = 2; // to be generated.
+}
+
+message ListPublicTokenResp {
+    Error error = 1;
+    repeated APIToken public_tokens = 2; 
+}
+
+message DeletePublicTokenReq {
+    int64 token_id = 1;
+}

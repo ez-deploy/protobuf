@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package = "gitee.com/ez-deploy/protobuf/model";
+
+
+// record user's identity information.
+message Identity {
+    string email = 1;
+    string name = 2;
+}
+
+message APIToken {
+    int64 id = 1;
+    Token token = 2;
+    string name = 3;
+    string message = 4;
+    int64  deadline_timestamp = 5;
+    repeated Actions allowed_actions = 6;
+}
+
+// used to access browser/api.
+message Token {
+    TokenType type = 1;
+    string token = 2;
+}
+
+enum TokenType {
+    session = 0; // to keep browser visits.
+    private = 1; // with user's all permissions.
+    public = 2; // permissions and deadlines defined by user.
+}
+
+enum Actions {
+    unkonwn = 0;
+    get_info = 1; // get_info about projects, members, and services.
+    manage_members = 2; // manage rbac in project.
+    manage_service = 3; // manage the services in project.
+};
