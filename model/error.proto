@@ -4,8 +4,8 @@ option go_package = "github.com/ez-deploy/protobuf/model";
 
 
 message Error {
-    bool success = 1;
-    string error = 2;
+    bool error = 1;
+    string message = 2;
 }
 
 // no other return value.
