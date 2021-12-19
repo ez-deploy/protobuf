@@ -3,7 +3,7 @@ syntax = "proto3";
 import "model/error.proto";
 import "model/identity.proto";
 
-option go_package = "gitee.com/ez-deploy/protobuf/identity";
+option go_package = "github.com/ez-deploy/protobuf/identity";
 
 service Ops {
     // Register by email and password.

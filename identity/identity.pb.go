@@ -7,7 +7,7 @@
 package identity
 
 import (
-	model "gitee.com/ez-deploy/protobuf/model"
+	model "github.com/ez-deploy/protobuf/model"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

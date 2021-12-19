@@ -1,4 +1,4 @@
-module gitee.com/ez-deploy/protobuf
+module github.com/ez-deploy/protobuf
 
 go 1.17
 
