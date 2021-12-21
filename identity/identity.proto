@@ -64,4 +64,5 @@ message ListPublicTokenResp {
 
 message DeletePublicTokenReq {
     int64 token_id = 1;
+    Identity identity = 2;
 }
