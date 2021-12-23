@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "github.com/ez-deploy/protobuf/model";
+
+import "model/identity.proto";
+
+message Authority {
+    Identity identity = 1;
+    string action = 2;
+    Resource resource = 3;
+}
+
+message Resource {
+    string type = 1;
+    string name = 2;
+}
