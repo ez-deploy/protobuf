@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option go_package = "github.com/ez-deploy/protobuf/project";
+
+
+import "model/identity.proto";
+import "model/error.proto";
+import "model/project.proto";
+
+service Ops {
+    rpc CreateProject (CreateProjectReq) returns (CommonResp) {}
+    rpc DeleteProject (DeleteProjectReq) returns (CommonResp) {}
+
+    rpc SetService (SetServiceReq) returns (CommonResp) {}
+    rpc GetService (GetServiceReq) returns (GetServiceResp) {}
+    rpc ListService (ListServiceReq) returns (ListServiceResp) {}
+    rpc DeleteService (DeleteServiceReq) returns (CommonResp) {}
+
+    rpc ListPods (ListPodsReq) returns (ListPodsResp) {}
+}
+
+message CreateProjectReq {
+    Project project = 1;
+}
+
+message DeleteProjectReq {
+    string project_name = 1;
+}
+
+// create if not exist, else update service.
+message SetServiceReq {
+    string project_name = 1;
+    Service service = 2;
+}
+
+message GetServiceReq {
+    string project_name = 1;
+    string service_name = 2;
+}
+
+message GetServiceResp {
+    Error error = 1;
+    Service service = 2;
+}
+
+// ListService by project_id, list all service under project.
+message ListServiceReq {
+    string project_name = 1;
+}
+
+message ListServiceResp {
+    Error error = 1;
+    repeated Service service = 2;
+}
+
+// delete service by service_id.
+message DeleteServiceReq {
+    string project_name = 1;
+    string service_name = 2;
+}
+
+message ListPodsReq {
+    string project_name = 1;
+    string service_name = 2;
+}
+
+message ListPodsResp {
+    Error error = 1;
+    repeated Pod pods = 2;
+}

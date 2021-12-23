@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option go_package = "github.com/ez-deploy/protobuf/model";
+
+message Project {
+    string name = 1;
+    string describe = 2;    
+}
+
+message Service {
+    string name = 1;
+    string describe = 2;
+    int32 replica = 3;
+    Image image = 4;
+    repeated Port expose_ports = 5;
+    repeated EnvironmentVariable envs = 6;
+}
+
+message Pod {
+    string name = 1;
+    string status = 2;
+    int64 age = 3; // age timestamp.
+    string machine_name = 4;
+}
+
+message Image {
+    string url = 1;
+    string version = 2;
+}
+
+// Port for container.
+message Port {
+    string name = 1;
+    int32 port = 2;
+}
+
+message EnvironmentVariable {
+    string key = 1;
+    string value = 2;
+}
