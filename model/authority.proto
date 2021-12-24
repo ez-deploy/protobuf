@@ -1,4 +1,5 @@
 syntax = "proto3";
+package model;
 
 option go_package = "github.com/ez-deploy/protobuf/model";
 
