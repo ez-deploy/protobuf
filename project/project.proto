@@ -3,12 +3,10 @@ package project;
 
 option go_package = "github.com/ez-deploy/protobuf/project";
 
-
-import "model/identity.proto";
 import "model/error.proto";
 import "model/project.proto";
 
-service Ops {
+service ProjectOps {
     rpc CreateProject (CreateProjectReq) returns (model.CommonResp) {}
     rpc DeleteProject (DeleteProjectReq) returns (model.CommonResp) {}
 

@@ -6,7 +6,7 @@ import "model/identity.proto";
 
 option go_package = "github.com/ez-deploy/protobuf/identity";
 
-service Ops {
+service IdentityOps {
     // Register by email and password.
     rpc Register (RegisterReq) returns (model.CommonResp) {}
     // Login by email and password.

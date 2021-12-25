@@ -7,7 +7,7 @@ import "model/authority.proto";
 
 option go_package = "github.com/ez-deploy/protobuf/authority";
 
-service Ops {
+service AuthorityOps {
     rpc SetAuthorities (Authorities) returns (model.CommonResp) {}
     rpc ListAuthoritiesByIdentity (model.Identity) returns (ListAuthoritiesResp) {}
     rpc ListAuthoritiesByResource (model.Resource) returns (ListAuthoritiesResp) {}
